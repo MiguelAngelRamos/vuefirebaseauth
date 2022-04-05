@@ -3,10 +3,20 @@
     <router-link to="/">Inicio</router-link> |
     <router-link to="/registro">Registro</router-link> |
     <router-link to="/login">Login</router-link> |
+    <button @click="cerrarSesion" class="btn btn-sm btn-secondary">Cerrar sesión</button>
   </nav>
   <router-view/>
 </template>
 
+<script>
+  import { mapActions } from 'vuex';
+
+  export default {
+    methods: {
+      ...mapActions(['cerrarSesion'])
+    }
+  }
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
