@@ -2,7 +2,7 @@
    <div class="container">
     <div class="row">
       <div class="col-4 offset-4">
-        <form @submit.prevent="">
+        <form @submit.prevent="loginUsuario({email: email, password: password})">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
               >Ingrese su correo</label
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 export default {
   name: 'Login',
   data() {
@@ -42,6 +43,12 @@ export default {
       email: "",
       password: ""
     }
+  },
+  methods: {
+    ...mapActions(['loginUsuario'])
+  },
+  computed: {
+    ...mapState(['error'])
   }
 
 }

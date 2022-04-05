@@ -39,11 +39,31 @@ export default createStore({
          commit('setError', err)
        })
     },
+    loginUsuario({commit}, usuario) {
+      // el usuario va ser un objeto
+      auth.signInWithEmailAndPassword(usuario.email, usuario.password)
+        .then( response => {
+          console.log(response); // objeto con mucha información y solo vamos tomar el email y la uid
+
+          // Creamos un nuevo objeto con las propiedades email y uid
+          const usuarioLogeado = {
+            email: response.user.email,
+            uid: response.user.uid
+          }
+          // el objeto usuarioLogeado es el que va ir a el state, para almacenar en el state necesitamos el mutation "setUsuario"
+          commit('setUsuario', usuarioLogeado)
+          router.push('/')
+        })
+        .catch(err => {
+          // Si el inicio de sesión no sale bien, pasamos el error el state por medio del mutation "setError"
+          commit('setError', err)
+        })
+    },
     cerrarSesion({commit}) {
       auth.signOut()
-        .then( () => {
+        .then(() => {
           router.push('/login')
-        })
+        }).catch(err => console.log(err))
     }
   },
   modules: {
