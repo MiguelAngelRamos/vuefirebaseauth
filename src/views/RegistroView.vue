@@ -27,13 +27,13 @@
           </div>
 
            <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
+            <label for="exampleInputPassword2" class="form-label"
               >Repita su contraseña</label
             >
             <input
               type="password"
               class="form-control"
-              id="exampleInputPassword1"
+              id="exampleInputPassword2"
               v-model="password2"
             />
           </div>

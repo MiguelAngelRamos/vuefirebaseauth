@@ -28,7 +28,7 @@
 
           <button type="submit" class="btn btn-primary">Acceder</button>
         </form>
-        
+        <p>{{ error }}</p>
       </div>
     </div>
   </div>
