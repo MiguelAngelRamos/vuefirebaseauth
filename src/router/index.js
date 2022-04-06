@@ -32,14 +32,19 @@ const router = createRouter({
 router.beforeEach((to, from, next ) => {
   // Estamos recorriendo cada unas de las rutas
   if(to.matched.some(record => record.meta.requiresAuth)) {
+    // si en la aplicacion hay un usuario con la sesion activa
+    console.log('ruta protegida');
     const usuario = auth.currentUser
     console.log(usuario);
     if(!usuario) {
       next({path: '/login'})
     } else {
+      // si existe usuario con sesion activa 
       next(); // lo dejamos pasar a la ruta protegida
     }
   } else {
+    // En este punto estan las rutas que no contienen meta: { requiresAuth: true }
+    // y se le da acceso
     next();
   }
 })

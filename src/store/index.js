@@ -64,10 +64,16 @@ export default createStore({
         .then(() => {
           router.push('/login')
         }).catch(err => console.log(err))
+    },
+    detectarUsuario({commit}, usuario) {
+      commit('setUsuario', usuario)
     }
   },
   modules: {
   },
   getters: {
+    existeUsuario(state) {
+      return state.usuario==null?false:true
+    }
   },
 })

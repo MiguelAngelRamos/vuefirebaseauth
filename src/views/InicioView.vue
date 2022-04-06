@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Ruta Protegida</h1>
+    <h1>BIENVENIDO(A) AL SISTEMA</h1>
     <p>Welcome</p>
   </div>
 </template>

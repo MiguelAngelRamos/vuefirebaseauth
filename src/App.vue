@@ -1,19 +1,23 @@
 <template>
   <nav>
-    <router-link to="/">Inicio</router-link> |
-    <router-link to="/registro">Registro</router-link> |
-    <router-link to="/login">Login</router-link> |
-    <button @click="cerrarSesion" class="btn btn-sm btn-secondary">Cerrar sesión</button>
+    <router-link to="/" v-if="existeUsuario">Inicio</router-link> |
+    <router-link to="/registro" v-if="!existeUsuario">Registro</router-link> |
+    <router-link to="/login" v-if="!existeUsuario">Login</router-link> |
+    <button @click="cerrarSesion" class="btn btn-sm btn-secondary" v-if="existeUsuario">Cerrar sesión</button>
   </nav>
+
   <router-view/>
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
 
   export default {
     methods: {
       ...mapActions(['cerrarSesion'])
+    },
+    computed: {
+      ...mapGetters(['existeUsuario'])
     }
   }
 </script>
